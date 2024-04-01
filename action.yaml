@@ -1,0 +1,44 @@
+name: 'uos-action'
+author: 'Yizhuang Li <i@lihaha.cn>'
+description: 'upload object storage'
+inputs:
+  cloudType:
+    description: 'Cloud type'
+    required: true
+    default: 'cos'
+  secretId:
+    description: 'Secret id'
+    required: true
+  secretKey:
+    description: 'Secret key'
+    required: true
+  bucket:
+    description: 'Bucket name'
+    required: true
+  region:
+    description: 'Bucket region'
+    required: true
+  localPath:
+    description: 'Local path'
+    required: true
+  remotePath:
+    description: 'Remote path'
+    required: false
+    default: '/'
+  uploadOrderSuffix:
+    description: 'Upload order suffix'
+    required: false
+  cdnDomain:
+    description: 'CDN domain'
+    required: false
+    default: ''
+  cdnRefresh:
+    description: 'CDN refresh'
+    required: false
+    default: false
+  cdnRefreshSuffix:
+    description: 'CDN refresh suffix'
+    required: false
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
