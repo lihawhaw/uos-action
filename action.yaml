@@ -1,10 +1,13 @@
 name: 'uos-action'
-author: 'Yizhuang Li <i@lihaha.cn>'
+author: 'liyizhuang <lihaha1024@gmail.com>'
 description: 'upload object storage'
+branding:
+  icon: 'upload-cloud'
+  color: 'white'
 inputs:
   cloudType:
     description: 'Cloud type'
-    required: true
+    required: false
     default: 'cos'
   secretId:
     description: 'Secret id'
@@ -25,7 +28,7 @@ inputs:
     description: 'Remote path'
     required: false
     default: '/'
-  uploadOrderSuffix:
+  uploadSuffix:
     description: 'Upload order suffix'
     required: false
   cdnDomain:
