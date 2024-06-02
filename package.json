@@ -2,10 +2,9 @@
   "name": "uos-action",
   "version": "0.0.1",
   "description": "",
-  "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build src/index.ts -o dist -m",
+    "build": "ncc build src/index.ts -o dist",
     "build:prod": "pnpm clean && pnpm build",
     "clean": "rm -rf dist",
     "dev": "pnpm build:prod && node dist/index.js"
