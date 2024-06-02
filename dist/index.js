@@ -93888,10 +93888,12 @@ class COSUploader {
     }
     async uploadFiles() {
         try {
+            message.info('uploadFiles-start');
             await this.cos.uploadFiles({
                 files: this.files,
                 SliceSize: 1024 * 1024 * 10,
                 onFileFinish: (error, data) => {
+                    message.info(`onFileFinish, ${error}, ${data}`);
                     if (!error && data)
                         message.success(`success：${this.remotePath}${decodeURIComponent(`${data.Location}`.split(this.remotePath)[1])}`);
                 },
