@@ -93961,7 +93961,7 @@ const run = async () => {
             config.files = filterByFileType(defaultFiles, inputs.uploadSuffix);
         }
         message.success('Data processing completed');
-        message.info(JSON.stringify(config.files, null, 4));
+        message.info(JSON.stringify(config, null, 4));
         message.info('Ready to start uploading');
         if (inputs.cloudType === 'cos') {
             message.info('cloudType-cos');
