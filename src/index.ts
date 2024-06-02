@@ -19,10 +19,15 @@ const run = async () => {
     }
     message.success('Data processing completed')
 
+    message.info(JSON.stringify(config.files, null, 4))
+
     message.info('Ready to start uploading')
     if (inputs.cloudType === 'cos') {
+      message.info('cloudType-cos')
       const cosInst = new COSUploader(config)
+      message.info('cosInst')
       await cosInst.uploadFiles()
+      message.info('uploadFiles')
     }
     message.success('All upload completed')
 

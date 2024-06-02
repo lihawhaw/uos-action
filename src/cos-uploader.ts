@@ -1,4 +1,5 @@
-import COS, {UploadFileItemParams} from 'cos-nodejs-sdk-v5'
+import * as COS from 'cos-nodejs-sdk-v5'
+import { UploadFileItemParams } from 'cos-nodejs-sdk-v5'
 import {ConfigType} from './types'
 import {message} from './utils'
 
@@ -12,7 +13,7 @@ export class COSUploader {
 
   constructor(config: ConfigType) {
     const {inputs, files} = config
-    this.cos = new COS({
+    this.cos = new COS.default({
       SecretId: inputs.secretId,
       SecretKey: inputs.secretKey,
     })
