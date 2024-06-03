@@ -26,5 +26,9 @@
     "@types/node": "^20.12.4",
     "@vercel/ncc": "^0.38.1",
     "typescript": "^5.4.3"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
   }
 }

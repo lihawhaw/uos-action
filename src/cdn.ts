@@ -7,7 +7,6 @@ const CommonClient = TencentCloudCommon.CommonClient
 export const runCdn = async (data: ConfigType) => {
   const {inputs} = data
   message.info('Start refreshing CDN')
-  // const res = await request.get('https://api.github.com/users/lihawhaw', undefined, {nonStandardResult: true})
 
   const client = new CommonClient(
     'cdn.tencentcloudapi.com',

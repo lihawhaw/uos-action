@@ -93888,14 +93888,15 @@ class COSUploader {
     }
     async uploadFiles() {
         try {
-            message.info('uploadFiles-start');
             await this.cos.uploadFiles({
                 files: this.files,
                 SliceSize: 1024 * 1024 * 10,
                 onFileFinish: (error, data) => {
-                    message.info(`onFileFinish, ${JSON.stringify(error)}, ${JSON.stringify(data)}`);
-                    if (!error && data)
-                        message.success(`success：${this.remotePath}${decodeURIComponent(`${data.Location}`.split(this.remotePath)[1])}`);
+                    // message.info(`onFileFinish, ${JSON.stringify(error)}, ${JSON.stringify(data)}`)
+                    if (!error && data) {
+                        // message.success(`success：${this.remotePath}${decodeURIComponent(`${data.Location}`.split(this.remotePath)[1])}`)
+                        message.success(`success：${data.Location}`);
+                    }
                 },
             });
             return Promise.resolve();
@@ -93915,7 +93916,6 @@ const CommonClient = tencentcloud.CommonClient;
 const runCdn = async (data) => {
     const { inputs } = data;
     message.info('Start refreshing CDN');
-    // const res = await request.get('https://api.github.com/users/lihawhaw', undefined, {nonStandardResult: true})
     const client = new CommonClient('cdn.tencentcloudapi.com', '2018-06-06', {
         credential: {
             secretId: inputs.secretId,
@@ -93963,7 +93963,7 @@ const run = async () => {
             config.files = filterByFileType(defaultFiles, inputs.uploadSuffix);
         }
         message.success('Data processing completed');
-        message.info(JSON.stringify(config, null, 4));
+        // message.info(JSON.stringify(config, null, 4))
         message.info('Ready to start uploading');
         if (inputs.cloudType === 'cos') {
             message.info('cloudType-cos');

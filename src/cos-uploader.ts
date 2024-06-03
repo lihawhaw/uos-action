@@ -33,14 +33,15 @@ export class COSUploader {
 
   public async uploadFiles(): Promise<void> {
     try {
-      
-      message.info('uploadFiles-start')
       await this.cos.uploadFiles({
         files: this.files,
         SliceSize: 1024 * 1024 * 10,
         onFileFinish: (error, data) => {
-          message.info(`onFileFinish, ${JSON.stringify(error)}, ${JSON.stringify(data)}`)
-          if (!error && data) message.success(`success：${this.remotePath}${decodeURIComponent(`${data.Location}`.split(this.remotePath)[1])}`)
+          // message.info(`onFileFinish, ${JSON.stringify(error)}, ${JSON.stringify(data)}`)
+          if (!error && data) {
+            // message.success(`success：${this.remotePath}${decodeURIComponent(`${data.Location}`.split(this.remotePath)[1])}`)
+            message.success(`success：${data.Location}`)
+          }
         },
       })
       return Promise.resolve()
